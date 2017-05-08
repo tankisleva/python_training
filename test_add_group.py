@@ -10,8 +10,8 @@ import unittest, time, re
 class TestAddGroup(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
-        self.driver.implicitly_wait(30)
-        self.base_url = "http://localhost/addressbook/"
+        self.driver.implicitly_wait(60)
+        self.base_url = "http://localhost/"
         self.verificationErrors = []
         self.accept_next_alert = True
     
