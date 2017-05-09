@@ -3,6 +3,7 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 import unittest
 from group import Group
 
+
 def is_alert_present(wd):
     try:
         wd.switch_to_alert().text
@@ -10,11 +11,12 @@ def is_alert_present(wd):
     except:
         return False
 
+
 class test_add_group(unittest.TestCase):
     def setUp(self):
         self.wd = WebDriver()
         self.wd.implicitly_wait(60)
-    
+
     def test_add_group(self):
         wd = self.wd
         self.open_home_page(wd)
@@ -72,11 +74,14 @@ class test_add_group(unittest.TestCase):
         wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
 
+
+
     def open_home_page(self, wd):
         wd.get("http://localhost/addressbook/index.php")
 
     def tearDown(self):
         self.wd.quit()
+
 
 if __name__ == '__main__':
     unittest.main()
