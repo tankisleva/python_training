@@ -1,7 +1,7 @@
-
 import pytest
-from contact import Contact
-from Application import Application
+
+from fixture.Application import Application
+from model.contact import Contact
 
 
 @pytest.fixture
