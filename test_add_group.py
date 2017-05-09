@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver.firefox.webdriver import WebDriver
-from selenium.webdriver.common.action_chains import ActionChains
-import time, unittest
+import unittest
 
 def is_alert_present(wd):
     try:
@@ -18,7 +17,9 @@ class test_add_group(unittest.TestCase):
     def test_test_add_group(self):
         success = True
         wd = self.wd
+        # open home page
         wd.get("http://localhost/addressbook/index.php")
+        # login
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys("admin")
@@ -26,8 +27,11 @@ class test_add_group(unittest.TestCase):
         wd.find_element_by_name("pass").clear()
         wd.find_element_by_name("pass").send_keys("secret")
         wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
+        # open group page
         wd.find_element_by_link_text("groups").click()
+        # init group creation
         wd.find_element_by_name("new").click()
+        # fill group form
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
         wd.find_element_by_name("group_name").send_keys("sfsfsf")
@@ -37,7 +41,11 @@ class test_add_group(unittest.TestCase):
         wd.find_element_by_name("group_footer").click()
         wd.find_element_by_name("group_footer").clear()
         wd.find_element_by_name("group_footer").send_keys("sfsfsfsf")
+        # submit group cration
         wd.find_element_by_name("submit").click()
+        # return  group page
+        wd.find_element_by_link_text("group page").click()
+        # logout
         wd.find_element_by_link_text("Logout").click()
         self.assertTrue(success)
     
