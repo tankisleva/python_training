@@ -3,39 +3,29 @@ class ContactHelper:
         self.app = app
 
     def create(self, contact):
-        wd = self.app.wd
         self.init_contact_creation()
-        wd.find_element_by_name("firstname").click()
-        wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys(contact.firstname)
-        wd.find_element_by_name("lastname").click()
-        wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys(contact.lastname)
-        wd.find_element_by_name("nickname").click()
-        wd.find_element_by_name("nickname").clear()
-        wd.find_element_by_name("nickname").send_keys(contact.nickname)
-        wd.find_element_by_name("mobile").click()
-        wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys(contact.mobilephone)
+        self.fill_contact_form(contact)
         self.submit_contact_creation()
         self.app.navigation.return_home_page()
 
     def modify(self, contact):
         wd = self.app.wd
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
-        wd.find_element_by_name("firstname").click()
-        wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys(contact.firstname)
-        wd.find_element_by_name("lastname").click()
-        wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys(contact.lastname)
-        wd.find_element_by_name("nickname").click()
-        wd.find_element_by_name("nickname").clear()
-        wd.find_element_by_name("nickname").send_keys(contact.nickname)
-        wd.find_element_by_name("mobile").click()
-        wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys(contact.mobilephone)
+        self.fill_contact_form(contact)
         wd.find_element_by_name("update").click()
+
+    def type(self, filed_name, text):
+        wd = self.app.wd
+        if text is not None:
+            wd.find_element_by_name(filed_name).click()
+            wd.find_element_by_name(filed_name).clear()
+            wd.find_element_by_name(filed_name).send_keys(text)
+
+    def fill_contact_form(self, contact):
+        self.type("firstname", contact.firstname)
+        self.type("lastname", contact.lastname)
+        self.type("nickname", contact.nickname)
+        self.type("mobile", contact.mobilephone)
 
     def delete_first_contact(self):
         wd = self.app.wd
