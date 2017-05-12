@@ -34,7 +34,6 @@ class ContactHelper:
         wd.switch_to_alert().accept()
         self.app.navigation.return_home_page()
 
-
     def submit_contact_creation(self):
         wd = self.app.wd
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
@@ -42,3 +41,8 @@ class ContactHelper:
     def init_contact_creation(self):
         wd = self.app.wd
         wd.find_element_by_link_text("add new").click()
+
+    def count(self):
+        wd = self.app.wd
+        self.app.navigation.return_home_page()
+        return len(wd.find_elements_by_name("selected[]"))
