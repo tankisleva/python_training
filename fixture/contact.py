@@ -87,8 +87,15 @@ class ContactHelper:
                 mobilephone = all_phones[1]
                 workphone = all_phones[2]
                 secondaryphone = all_phones[3]
-                self.contact_cache.append(Contact(firstname, lastname, id, homephone,
-                                                  mobilephone, workphone, secondaryphone))
+                all_emails = cells[4].text.splitlines()
+                email = all_emails[0]
+                email2 = all_emails[1]
+                email3 = all_emails[2]
+                address = cells[3].text
+                self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id, homephone=homephone,
+                                                  mobilephone=mobilephone, workphone=workphone,
+                                                  secondaryphone=secondaryphone, email=email, email2=email2,
+                                                  email3=email3, address=address))
 
         return list(self.contact_cache)
 
@@ -102,8 +109,13 @@ class ContactHelper:
         workphone = wd.find_element_by_name("work").get_attribute("value")
         mobilephone = wd.find_element_by_name("mobile").get_attribute("value")
         secondaryphone = wd.find_element_by_name("phone2").get_attribute("value")
+        email = wd.find_element_by_name("email").get_attribute("value")
+        email2 = wd.find_element_by_name("email2").get_attribute("value")
+        email3 = wd.find_element_by_name("email3").get_attribute("value")
+        address = wd.find_element_by_name("address").get_attribute("value")
         return Contact(firstname=firstname, lastname=lastname, id=id, homephone=homephone, workphone=workphone,
-                       mobilephone=mobilephone, secondaryphone=secondaryphone)
+                       mobilephone=mobilephone, secondaryphone=secondaryphone, email=email, email2=email2, email3=email3
+                       , address=address)
 
     def get_contact_from_view_page(self, index):
         wd = self.app.wd
@@ -113,7 +125,13 @@ class ContactHelper:
         workphone = re.search("W: (.*)", text).group(1)
         mobilephone = re.search("M: (.*)", text).group(1)
         secondaryphone = re.search("P: (.*)", text).group(1)
+
         return Contact(homephone=homephone, workphone=workphone, mobilephone=mobilephone, secondaryphone=secondaryphone)
+
+    def get_contact_text_from_view_page(self, index):
+        wd = self.app.wd
+        self.open_contact_view_by_index(index)
+        return wd.find_element_by_id("content").text
 
 
 
