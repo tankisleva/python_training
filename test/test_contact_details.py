@@ -34,7 +34,6 @@ def test_deatails_on_contact_view_page(app):
                           "M: " + clear(contact_from_edit_page.mobilephone) + "\n" + "W: " +clear(contact_from_edit_page.workphone) + "\n\n" + merge_emails +\
                           "\n\n\n\n" + "P: " +clear(contact_from_edit_page.secondaryphone)
    textDetails = app.contact.get_contact_text_from_view_page(0)
-   print("test")
    assert textDetails == merge_Datails_From_Edit
 
 
