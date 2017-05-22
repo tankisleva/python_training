@@ -13,7 +13,7 @@ class NavigationHelper:
         wd = self.app.wd
         if wd.current_url.endswith("/index.php") and len(wd.find_elements_by_name("add")) > 0:
             return
-        wd.get("http://localhost/addressbook/index.php")
+        wd.get(self.app.base_url)
 
     def return_group_page(self):
         wd = self.app.wd
