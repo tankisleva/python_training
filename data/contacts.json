@@ -1,0 +1,47 @@
+[
+  {
+    "py/object": "model.contact.Contact",
+    "address": "parway yraeva",
+    "email": null,
+    "email2": null,
+    "email3": null,
+    "firstname": "oleg",
+    "homephone": null,
+    "id": null,
+    "lastname": "malyshev",
+    "mobilephone": null,
+    "nickname": null,
+    "secondaryphone": null,
+    "workphone": null
+  },
+  {
+    "py/object": "model.contact.Contact",
+    "address": "parway yraeva",
+    "email": null,
+    "email2": null,
+    "email3": null,
+    "firstname": "oleg",
+    "homephone": null,
+    "id": null,
+    "lastname": "malyshev",
+    "mobilephone": null,
+    "nickname": null,
+    "secondaryphone": null,
+    "workphone": null
+  },
+  {
+    "py/object": "model.contact.Contact",
+    "address": "parway yraeva",
+    "email": null,
+    "email2": null,
+    "email3": null,
+    "firstname": "oleg",
+    "homephone": null,
+    "id": null,
+    "lastname": "malyshev",
+    "mobilephone": null,
+    "nickname": null,
+    "secondaryphone": null,
+    "workphone": null
+  }
+]

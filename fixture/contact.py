@@ -82,18 +82,19 @@ class ContactHelper:
                 firstname = cells[2].text
                 lastname = cells[1].text
                 id = cells[0].find_element_by_tag_name("input").get_attribute("value")
-                all_phones = cells[5].text.splitlines()
-                homephone = all_phones[0]
-                mobilephone = all_phones[1]
-                workphone = all_phones[2]
-                secondaryphone = all_phones[3]
+                address = cells[3].text
+                # all_phones = cells[5].text.splitlines()
+                # homephone = all_phones[0]
+                # mobilephone = all_phones[1]
+                # workphone = all_phones[2]
+                # secondaryphone = all_phones[3]
                 # all_emails = cells[4].text.splitlines()
                 # email = all_emails[0]
                 # email2 = all_emails[1]
                 # email3 = all_emails[2]
                 # address = cells[3].text
-                self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id, homephone=homephone,
-                                                  mobilephone=mobilephone, workphone=workphone, secondaryphone=secondaryphone))
+                self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id,
+                                                  address=address))
 
         return list(self.contact_cache)
 
