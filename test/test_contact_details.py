@@ -2,23 +2,21 @@ import re
 
 def test_deatails_on_contact_view_page(app):
    contact_from_edit_page = app.contact.get_contact_into_from_edit_page(0)
-   email = contact_from_edit_page.email
-   email2 = contact_from_edit_page.email2
-   email3 = contact_from_edit_page.email3
-   split_email = email.split("@")
-   merge_email = email + " (www." +split_email[1] + ")"
-   split_email2 = email2.split("@")
-   merge_email2 = email2 + " (www." + split_email2[1] + ")"
-   split_email3 = email3.split("@")
-   merge_email3 = email3 + " (www." + split_email3[1] + ")"
-   merge_emails = merge_email + "\n" + merge_email2 + "\n" + merge_email3
+   contact_from_table_list = app.contact.get_contact_list_all_data_from_table()[0]
+   contact_from_table_list.allphones
+   contact_from_table_list.allemails
 
-   merge_Datails_From_Edit = contact_from_edit_page.firstname + " " + contact_from_edit_page.lastname + "\n" + \
-                          contact_from_edit_page.address + "\n\n" + "H: " + clear(contact_from_edit_page.homephone) + "\n" + \
-                          "M: " + clear(contact_from_edit_page.mobilephone) + "\n" + "W: " + clear(contact_from_edit_page.workphone) + "\n\n" + merge_emails +\
-                          "\n\n\n\n" + "P: " + clear(contact_from_edit_page.secondaryphone)
-   textDetails = app.contact.get_contact_text_from_view_page(0)
-   assert textDetails == merge_Datails_From_Edit
+   firstname = contact_from_edit_page.firstname
+   lastname = contact_from_edit_page.lastname
+   address = contact_from_edit_page.address
+   phones = [clear(contact_from_edit_page.homephone), clear(contact_from_edit_page.mobilephone), clear(contact_from_edit_page.workphone)]
+   emails = [contact_from_edit_page.email, contact_from_edit_page.email2, contact_from_edit_page.email3]
+
+   assert contact_from_table_list.firstname == firstname
+   assert contact_from_table_list.lastname == lastname
+   assert contact_from_table_list.address == address
+   assert contact_from_table_list.allphones == phones
+   assert contact_from_table_list.allemails == emails
 
 
 def clear(s):
