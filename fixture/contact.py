@@ -108,8 +108,8 @@ class ContactHelper:
                 firstname = cells[2].text
                 lastname = cells[1].text
                 id = cells[0].find_element_by_tag_name("input").get_attribute("value")
-                allphones = cells[5].text.splitlines()
-                allemails = cells[4].text.splitlines()
+                allphones = cells[5].text
+                allemails = cells[4].text
                 address = cells[3].text
                 self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id, allemails=allemails,
                                                   allphones=allphones,
