@@ -21,11 +21,12 @@ class Contact:
         self.allphones = allphones
 
     def __repr__(self):
-        return "%s:%s:%s" % (self.firstname, self.lastname, self.id)
+        return "%s:%s:%s" % (self.firstname, self.lastname, self.id, self.address, self.allphones, self.allemails)
 
     def __eq__(self, other):
         return (self.id is None or other.id is None or self.id == other.id) and self.firstname == other.firstname and \
-               self.lastname == other.lastname
+               self.lastname == other.lastname and self.address == other.address and self.allemails == other.allemails and \
+               self.allphones == other.allphones
 
     def id_or_max(self):
         if self.id:
