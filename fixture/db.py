@@ -26,7 +26,7 @@ class DbFixture:
             cursor.close()
         return list
 
-    def get_contact_list_alt_data(self):
+    def get_contact_list_all_data(self):
         def clear(s):
             return re.sub("[() -]", "", s)
 
